@@ -1,7 +1,7 @@
 #Timer für die Nachladezeit setzen (Wird alle zwei Ticks um 1 verringert.)
 scoreboard players set @s timer 20
 
-#Munition abziehen
+#Spezialmunition abziehen
 clear @s minecraft:iron_nugget{CustomModelData:2} 1
 
 #Schießen

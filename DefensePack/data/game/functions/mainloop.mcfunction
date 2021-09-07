@@ -13,9 +13,6 @@ execute as @a[scores={click=1.., rocket_flying=1, timer=0..29}, nbt={SelectedIte
 #Redstoneblaster
 execute as @a[scores={click=1.., timer=0}, nbt={SelectedItem:{id:"minecraft:carrot_on_a_stick", tag:{CustomModelData:4}}, Inventory:[{id:"minecraft:redstone"}]}] at @s run function game:redstone_blaster_shoot
 
-#Gun Turret
-execute as @a[scores={click=1.., timer=0}, nbt={SelectedItem:{id:"minecraft:carrot_on_a_stick", tag:{CustomModelData:5}}}] at @s run function game:spawn_gun_turret
-
 #Item Magnet
 execute as @a[scores={click=1..}, nbt={SelectedItem:{id:"minecraft:carrot_on_a_stick", tag:{CustomModelData:6}}}] at @s run function game:activate_item_magnet
 

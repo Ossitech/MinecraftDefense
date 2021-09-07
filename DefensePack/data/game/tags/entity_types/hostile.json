@@ -27,6 +27,7 @@
 		"minecraft:wither_skeleton",
 		"minecraft:stray",
 		"minecraft:vindicator",
-		"minecraft:enderman"
+		"minecraft:enderman",
+		"minecraft:shulker_projectile"
 	]
 }

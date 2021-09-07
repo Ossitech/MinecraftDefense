@@ -13,15 +13,6 @@ kill @e[type=arrow, tag=projectile, tag=!alive]
 execute as @e[type=arrow,tag=projectile,tag=alive] at @s run data merge entity @s {Tags:["projectile"]}
 
 
-#Gun Turrets handlen
-#Schießen
-execute as @e[tag=gun_turret, scores={timer=0, ammo=1..}] at @s if entity @e[type=#game:hostile, distance=0..15] facing entity @e[type=#game:hostile, distance=0..15, limit=1, sort=random] feet run function game:gun_turret_check
-
-#Aufmunitionieren
-execute as @e[tag=gun_turret] at @s run execute at @e[type=item, nbt={Item:{id:"minecraft:arrow", Count:1b}}, distance=0..0.5] run scoreboard players add @s ammo 1
-execute as @e[tag=gun_turret] at @s run execute at @e[type=item, nbt={Item:{id:"minecraft:arrow", Count:1b}}, distance=0..0.5, limit=1] run tellraw @p [{"text":"Munition: ","color":"green"},{"score":{"name":"@s","objective":"ammo"}},{"text":" Schuss"}]
-execute as @e[tag=gun_turret] at @s run execute as @e[type=item, nbt={Item:{id:"minecraft:arrow", Count:1b}}, distance=0..0.5] at @s run kill @s
-
 #Quellen von Ertrunkenen
 execute as @e[type=armor_stand, tag=well, tag=init] at @s run scoreboard players set @s timer 150
 execute as @e[type=armor_stand, tag=well, tag=init] at @s run data merge entity @s {Tags:["well"]}

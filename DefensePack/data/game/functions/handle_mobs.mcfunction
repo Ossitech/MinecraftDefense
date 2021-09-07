@@ -14,11 +14,11 @@ execute if entity @e[type=villager, scores={trader=1, traderHP=..0}] run functio
 
 
 #Alle Mobs ran holen
-execute as @e[type=villager, scores={trader=1, day=0}] at @s run execute as @e[type=#game:hostile, distance=20..] at @s if block ^ ^ ^1 #game:move_through run execute unless entity @p[distance=..20, gamemode=survival] run tp @s ^ ^ ^1 facing entity @e[type=villager, scores={trader=1}, limit=1]
+#execute as @e[type=villager, scores={trader=1, day=0}] at @s run execute as @e[type=#game:hostile, distance=20..] at @s if block ^ ^ ^1 #game:move_through run execute unless entity @p[distance=..20, gamemode=survival] run tp @s ^ ^ ^1 facing entity @e[type=villager, scores={trader=1}, limit=1]
 #Blöcke steigen
-execute as @e[type=villager, scores={trader=1, day=0}] at @s run execute as @e[type=#game:hostile, distance=20..] at @s unless block ^ ^ ^1 #game:move_through run execute unless entity @p[distance=..20, gamemode=survival] run tp @s ~ ~1 ~ facing entity @e[type=villager, scores={trader=1}, limit=1]
+#execute as @e[type=villager, scores={trader=1, day=0}] at @s run execute as @e[type=#game:hostile, distance=20..] at @s unless block ^ ^ ^1 #game:move_through run execute unless entity @p[distance=..20, gamemode=survival] run tp @s ~ ~1 ~ facing entity @e[type=villager, scores={trader=1}, limit=1]
 #Runter kommen
-execute as @e[type=villager, scores={trader=1, day=0}] at @s run execute as @e[type=#game:hostile, distance=20..] at @s if block ^ ^ ^1 #game:move_through run execute unless entity @p[distance=..20, gamemode=survival] run execute if block ~ ~-1 ~ #game:move_through run tp @s ^ ^-1 ^ facing entity @e[type=villager, scores={trader=1}, limit=1]
+#execute as @e[type=villager, scores={trader=1, day=0}] at @s run execute as @e[type=#game:hostile, distance=20..] at @s if block ^ ^ ^1 #game:move_through run execute unless entity @p[distance=..20, gamemode=survival] run execute if block ~ ~-1 ~ #game:move_through run tp @s ^ ^-1 ^ facing entity @e[type=villager, scores={trader=1}, limit=1]
 
 
 #Mobs wollen beim Trader bleiben
