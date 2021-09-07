@@ -1,0 +1,11 @@
+{
+    "parent": "item/generated",
+    "textures": {
+        "layer0": "items/iron_nugget"
+    },
+    "overrides": [
+        {"predicate": {"custom_model_data": 1}, "model": "item/pistol_ammo"},
+        {"predicate": {"custom_model_data": 2}, "model": "item/flak_ammo"},
+        {"predicate": {"custom_model_data": 3}, "model": "item/tow_ammo"}
+    ]
+}

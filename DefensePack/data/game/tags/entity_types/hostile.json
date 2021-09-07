@@ -1,0 +1,32 @@
+{
+	"replace": false,
+	"values": [
+		"minecraft:zombie",
+		"minecraft:zombie_villager",
+		"minecraft:zombie_pigman",
+		"minecraft:phantom",
+		"minecraft:wither",
+		"minecraft:witch",
+		"minecraft:ghast",
+		"minecraft:blaze",
+		"minecraft:silverfish",
+		"minecraft:pillager",
+		"minecraft:slime",
+		"minecraft:magma_cube",
+		"minecraft:creeper",
+		"minecraft:drowned",
+		"minecraft:evoker",
+		"minecraft:illusioner",
+		"minecraft:spider",
+		"minecraft:cave_spider",
+		"minecraft:husk",
+		"minecraft:ravager",
+		"minecraft:vex",
+		"minecraft:wolf",
+		"minecraft:skeleton",
+		"minecraft:wither_skeleton",
+		"minecraft:stray",
+		"minecraft:vindicator",
+		"minecraft:enderman"
+	]
+}

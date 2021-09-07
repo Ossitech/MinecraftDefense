@@ -1,0 +1,15 @@
+{
+	"replace": false,
+	"values": [
+		"minecraft:air",
+		"minecraft:grass",
+		"minecraft:tall_grass",
+		"minecraft:rose_bush",
+		"minecraft:dead_bush",
+		"#minecraft:flowers",
+		"minecraft:water",
+		"minecraft:lava",
+		"minecraft:scaffolding",
+		"minecraft:ladder"
+	]
+}

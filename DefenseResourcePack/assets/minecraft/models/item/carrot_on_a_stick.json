@@ -1,0 +1,14 @@
+{
+    "parent": "item/handheld_rod",
+    "textures": {
+        "layer0": "items/carrot_on_a_stick"
+    },
+    "overrides": [
+        {"predicate": {"custom_model_data": 1}, "model": "item/pistol"},
+        {"predicate": {"custom_model_data": 2}, "model": "item/flak_cannon"},
+        {"predicate": {"custom_model_data": 3}, "model": "item/tow"},
+        {"predicate": {"custom_model_data": 4}, "model": "item/redstone_blaster"},
+        {"predicate": {"custom_model_data": 5}, "model": "item/gun_turret"},
+        {"predicate": {"custom_model_data": 6}, "model": "item/item_magnet"}
+    ]
+}

@@ -1,0 +1,59 @@
+{
+    "pistol.shoot": {
+        "sounds": [
+          "guns/pistol/shoot1",
+          "guns/pistol/shoot2",
+          "guns/pistol/shoot3"
+        ]
+      },
+      "flak.shoot": {
+        "sounds": [
+          "guns/flak/shoot1",
+          "guns/flak/shoot2",
+          "guns/flak/shoot3"
+        ]
+      },
+      "tow.shoot": {
+        "sounds": [
+          "guns/tow/shoot1",
+          "guns/tow/shoot2",
+          "guns/tow/shoot3"
+        ]
+      },
+      "blaster.shoot": {
+        "sounds": [
+          "guns/redstone_blaster/shoot1",
+          "guns/redstone_blaster/shoot2",
+          "guns/redstone_blaster/shoot3"
+        ]
+      },
+      "gun_turret.shoot": {
+        "sounds": [
+          "guns/gun_turret/shoot1",
+          "guns/gun_turret/shoot2",
+          "guns/gun_turret/shoot3"
+        ]
+      },
+      "siren": {
+          "sounds": [
+              "siren/siren"
+          ]
+      },
+      "builder.warning": {
+          "sounds": [
+              "siren/warning"
+          ]
+      },
+      "attack.scream": {
+          "sounds": [
+              "attack_screams/yumasta",
+              "attack_screams/ohhh"
+          ]
+      },
+      "block.beacon.ambient":{
+        "sounds": [
+          "attack_screams/yumasta",
+          "attack_screams/ohhh"
+      ]
+      }
+}
