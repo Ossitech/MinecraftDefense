@@ -3,10 +3,10 @@
 #execute as @e[type=villager, scores={trader=1, timer=1..}] run spreadplayers ~ ~ 2 50 false @e[type=#game:hostile, distance=100..]
 
 #So viele Mobs pro Spieler spawnen wie der Wert der aktuellen Welle ist.
-execute as @e[type=villager, scores={trader=1, wave_spawn=1..}] at @a run schedule function game:spawn_mob 10s append
-execute as @e[type=villager, scores={trader=1, wave_spawn=1..}] at @a run schedule function game:spawn_mob 105s append
-execute as @e[type=villager, scores={trader=1, wave_spawn=1..}] at @a run schedule function game:spawn_mob 210s append
-execute as @e[type=villager, scores={trader=1, wave_spawn=1..}] at @a run schedule function game:spawn_mob 315s append
+execute as @e[type=villager, scores={trader=1, wave_spawn=1..}] at @a run schedule function game:spawn_mob_try 10s append
+execute as @e[type=villager, scores={trader=1, wave_spawn=1..}] at @a run schedule function game:spawn_mob_try 105s append
+execute as @e[type=villager, scores={trader=1, wave_spawn=1..}] at @a run schedule function game:spawn_mob_try 210s append
+execute as @e[type=villager, scores={trader=1, wave_spawn=1..}] at @a run schedule function game:spawn_mob_try 315s append
 
 
 #Trader stirbt
@@ -76,8 +76,18 @@ execute as @e[type=villager, scores={trader=1, water_timer=0}] at @e[type=drowne
 #Super Bauer
 execute as @e[tag=super_builder] at @s facing entity @e[type=villager, scores={trader=1}, limit=1] eyes if entity @e[type=villager, scores={trader=1}, distance=3..] run tp @s ^ ^ ^0.2
 #Plattform unter sich erschaffen
-execute as @e[tag=super_builder] at @s if entity @e[type=villager, scores={trader=1}, distance=3..] run fill ~-1 ~-1 ~-1 ~1 ~-1 ~1 minecraft:dirt replace #game:move_through
+#execute as @e[tag=super_builder] at @s if entity @e[type=villager, scores={trader=1}, distance=3..] run fill ~-1 ~-1 ~-1 ~1 ~-1 ~1 minecraft:dirt replace #game:move_through
 #Raum um sich frei machen
-execute as @e[tag=super_builder] at @s if entity @e[type=villager, scores={trader=1}, distance=3..] run fill ~-1 ~ ~-1 ~1 ~2 ~1 minecraft:air
+execute as @e[tag=super_builder] at @s if entity @e[type=villager, scores={trader=1}, distance=3..] run fill ~-1 ~ ~-1 ~1 ~2 ~1 minecraft:air destroy
 #Sichtbar machen
 execute as @e[tag=super_builder] at @s run effect give @s glowing 1 1
+
+
+#Normal spawnende mobs mit den entsprechnenden Versionen auf Shulkerbullets ersetzen
+execute if entity @e[type=#game:hostile, tag=!passenger] run function game:spawn_replacement
+
+#Shulkerbullets / Carrierprojektile handlen
+#Shulkerbullet killen wenn sie einem Spieler näher als 10 Blöcke kommt
+execute as @e[tag=carrier] at @s if entity @e[type=player, distance=0..10]
+#Shulkerbullet killen wenn sie dem Trader näher als 1 Block kommt.
+execute as @e[tag=carrier] at @s if entity @e[type=villager, scores={trader=1}, distance=0..1]
