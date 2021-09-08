@@ -52,6 +52,7 @@ execute as @a[scores={death_timer=1..}] run scoreboard players remove @s death_t
 execute as @a[scores={death_timer=1..}] run tellraw @a [{"text":"Respawn: "},{"score":{"name":"@s","objective":"death_timer"}}]
 #Spieler wieder auf Survival setzen
 execute as @a[scores={death_timer=1}] run gamemode survival @s
+execute as @a[scores={death_timer=1}] run tp @s @e[scores={trader=1}]
 
 #Loopen
 schedule function game:mainloop 2t
