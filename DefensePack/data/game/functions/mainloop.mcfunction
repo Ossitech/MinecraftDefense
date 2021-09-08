@@ -8,10 +8,10 @@ execute as @a[scores={click=1.., timer=0}, nbt={SelectedItem:{id:"minecraft:carr
 execute as @a[scores={click=1.., rocket_flying=0, timer=0}, nbt={SelectedItem:{id:"minecraft:carrot_on_a_stick", tag:{CustomModelData:3}}, Inventory:[{id:"minecraft:iron_nugget", tag:{CustomModelData:3}}]}] at @s run function game:tow_shoot
 
 #Tow-Rakete zünden
-execute as @a[scores={click=1.., rocket_flying=1, timer=0..29}, nbt={SelectedItem:{id:"minecraft:carrot_on_a_stick", tag:{CustomModelData:3}}, Inventory:[{id:"minecraft:iron_nugget", tag:{CustomModelData:3}}]}] at @s run function game:tow_trigger
+execute as @a[scores={click=1.., rocket_flying=1, timer=0..29}, nbt={SelectedItem:{id:"minecraft:carrot_on_a_stick", tag:{CustomModelData:3}}}] at @s run function game:tow_trigger
 
 #Redstoneblaster
-execute as @a[scores={click=1.., timer=0}, nbt={SelectedItem:{id:"minecraft:carrot_on_a_stick", tag:{CustomModelData:4}}, Inventory:[{id:"minecraft:redstone"}]}] at @s run function game:redstone_blaster_shoot
+execute as @a[scores={click=1.., timer=0}, nbt={SelectedItem:{id:"minecraft:carrot_on_a_stick", tag:{CustomModelData:4}}, Inventory:[{id:"minecraft:iron_nugget", tag:{CustomModelData:1}}]}] at @s run function game:redstone_blaster_shoot
 
 #Item Magnet
 execute as @a[scores={click=1..}, nbt={SelectedItem:{id:"minecraft:carrot_on_a_stick", tag:{CustomModelData:6}}}] at @s run function game:activate_item_magnet
@@ -47,6 +47,11 @@ scoreboard players remove @e[scores={water_timer=1..}] water_timer 1
 #Counter zum Spawnen der Wellenstärke runterzählen
 scoreboard players remove @e[type=villager, scores={wave_spawn=1..}] wave_spawn 1
 
+#Den death_timer für jeden Spieler runterzählen
+execute as @a[scores={death_timer=1..}] run scoreboard players remove @s death_timer 1
+execute as @a[scores={death_timer=1..}] run tellraw @a [{"text":"Respawn: "},{"score":{"name":"@s","objective":"death_timer"}}]
+#Spieler wieder auf Survival setzen
+execute as @a[scores={death_timer=1}] run gamemode survival @s
 
 #Loopen
 schedule function game:mainloop 2t

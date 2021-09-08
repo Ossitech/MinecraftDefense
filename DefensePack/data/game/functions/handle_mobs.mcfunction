@@ -83,10 +83,19 @@ execute as @e[tag=super_builder] at @s if entity @e[type=villager, scores={trade
 execute as @e[tag=super_builder] at @s run effect give @s glowing 1 1
 
 
-#Normal spawnende mobs mit den entsprechnenden Versionen auf Shulkerbullets ersetzen
-execute if entity @e[type=#game:hostile, tag=!passenger] run function game:spawn_replacement
+#Über allen natürlich gespawnten Mobs Shulkerbullets mit 50 Steps und Motion nach oben erzeugen.
+#Die Shulkerbullet soll den jeweiligen Mob mit sich zum Trader nehmen.
+execute as @e[type=#game:hostile, tag=!passenger] at @s run summon shulker_bullet ~ ~2 ~ {Steps:50, Tags:["carrier"]}
+
+#Damit nicht ständig neue Shulkerbullets spawnen, wird den neuen Mobs der Tag passenger angeheftet und Mobs mit diesem Tag werden ignoriert.
+execute as @e[type=#game:hostile, tag=!passenger] run tag @s add passenger
+
+#Allen Shulkerbullets ohne Ziel den Trader als Ziel festlegen.
+execute as @e[tag=carrier] unless data entity @s Target run data modify entity @s Target set from entity @e[type=villager, scores={trader=1}, limit=1] UUID
 
 #Shulkerbullets / Carrierprojektile handlen
+#Shulkerbullets nehmen nahe gelegene Gegnermobs mit sich in richtung Trader
+execute as @e[tag=carrier] at @s run tp @e[type=#game:hostile, distance=0..2] ~ ~1 ~
 #Shulkerbullet killen wenn sie einem Spieler näher als 10 Blöcke kommt
 execute as @e[tag=carrier] at @s if entity @e[type=player, distance=0..10]
 #Shulkerbullet killen wenn sie dem Trader näher als 1 Block kommt.

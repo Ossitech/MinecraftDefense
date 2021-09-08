@@ -1,7 +1,4 @@
-tellraw @a [{"selector":"@p"}, {"text":" kann in 15 Sekunden wiederbelebt werden!", "color":"blue"}]
-spawnpoint @p ~ ~ ~
-summon armor_stand ~ ~ ~ {Invisible:1, NoGravity:1, Tags:["death_marker"]}
-scoreboard players set @e[type=armor_stand, tag=death_marker, limit=1, sort=nearest] timer 750
-effect give @e[type=armor_stand, tag=death_marker, limit=1, sort=nearest] minecraft:glowing 10000 1
+tellraw @a [{"selector":"@p"}, {"text":" respawnt in 30 Sekunden!", "color":"blue"}]
+execute at @e[type=villager, scores={trader=1}, limit=1] run spawnpoint @s ~ ~ ~
+scoreboard players set @s death_timer 300
 gamemode spectator
-spectate @e[type=armor_stand, tag=death_marker, limit=1, sort=nearest] @p

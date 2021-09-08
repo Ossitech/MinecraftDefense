@@ -1,14 +1,14 @@
 {
 	"replace": false,
 	"values": [
-		"minecraft:zombie",
-		"minecraft:zombie_villager",
-		"minecraft:zombie_pigman",
-		"minecraft:zombie_horse",
-		"#minecraft:skeletons",
-		"minecraft:phantom",
-		"minecraft:wither",
-		"minecraft:husk",
-		"minecraft:drowned"
+		{"id": "minecraft:zombie", "required": false},
+		{"id": "minecraft:zombie_villager", "required": false},
+		{"id": "minecraft:zombie_pigman", "required": false},
+		{"id": "minecraft:zombie_horse", "required": false},
+		{"id": "#minecraft:skeletons", "required": false},
+		{"id": "minecraft:phantom", "required": false},
+		{"id": "minecraft:wither", "required": false},
+		{"id": "minecraft:husk", "required": false},
+		{"id": "minecraft:drowned", "required": false}
 	]
 }
