@@ -6,7 +6,7 @@ scoreboard players set @a timer 0
 scoreboard objectives add death_timer dummy
 #Für neue Spieler den death_timer auf 0 setzen aber aktuell tote Spieler sollen nicht durch einen rejoin direkt wiederbelebt werden.
 #Wenn der death_timer für diesen Spieler noch uninitialisiert ist soll er auf 0 gesetzt werden.
-execute as @a unless entity @s[scores={death_timer=0..}] scoreboard players set @a death_timer 0
+execute as @a unless entity @s[scores={death_timer=0..}] run scoreboard players set @a death_timer 0
 
 scoreboard objectives add tow_rocket dummy
 
