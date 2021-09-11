@@ -38,7 +38,6 @@ execute store result bossbar minecraft:trader value run scoreboard players get @
 execute as @a[gamemode=survival, scores={HP=0}] at @s run function game:spectate
 
 
-
 #Timer runterzählen für jeden Spieler
 scoreboard players remove @e[scores={timer=1..}] timer 1
 scoreboard players remove @e[scores={dig_timer=1..}] dig_timer 1
@@ -49,7 +48,7 @@ scoreboard players remove @e[type=villager, scores={wave_spawn=1..}] wave_spawn 
 
 #Den death_timer für jeden Spieler runterzählen
 execute as @a[scores={death_timer=1..}] run scoreboard players remove @s death_timer 1
-execute as @a[scores={death_timer=1..}] run tellraw @a [{"text":"Respawn: "},{"score":{"name":"@s","objective":"death_timer"}}]
+execute as @a[scores={death_timer=1..}] run tellraw @s [{"text":"Respawn: "},{"score":{"name":"@s","objective":"death_timer"}}]
 #Spieler wieder auf Survival setzen
 execute as @a[scores={death_timer=1}] run gamemode survival @s
 execute as @a[scores={death_timer=1}] run tp @s @e[scores={trader=1}, limit=1]

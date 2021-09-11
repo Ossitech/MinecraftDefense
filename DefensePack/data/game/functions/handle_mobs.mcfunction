@@ -3,10 +3,10 @@
 #execute as @e[type=villager, scores={trader=1, timer=1..}] run spreadplayers ~ ~ 2 50 false @e[type=#game:hostile, distance=100..]
 
 #So viele Mobs pro Spieler spawnen wie der Wert der aktuellen Welle ist.
-execute as @e[type=villager, scores={trader=1, wave_spawn=1..}] at @a run schedule function game:spawn_mob_try 10s append
-execute as @e[type=villager, scores={trader=1, wave_spawn=1..}] at @a run schedule function game:spawn_mob_try 105s append
-execute as @e[type=villager, scores={trader=1, wave_spawn=1..}] at @a run schedule function game:spawn_mob_try 210s append
-execute as @e[type=villager, scores={trader=1, wave_spawn=1..}] at @a run schedule function game:spawn_mob_try 315s append
+execute as @e[type=villager, scores={trader=1, wave_spawn=1..}] at @a run schedule function game:spawn_mob 10s append
+execute as @e[type=villager, scores={trader=1, wave_spawn=1..}] at @a run schedule function game:spawn_mob 105s append
+execute as @e[type=villager, scores={trader=1, wave_spawn=1..}] at @a run schedule function game:spawn_mob 210s append
+execute as @e[type=villager, scores={trader=1, wave_spawn=1..}] at @a run schedule function game:spawn_mob 315s append
 
 
 #Trader stirbt
@@ -84,11 +84,18 @@ execute as @e[tag=super_builder] at @s run effect give @s glowing 1 1
 
 
 #Über allen natürlich gespawnten Mobs Shulkerbullets mit 50 Steps und Motion nach oben erzeugen.
-#Die Shulkerbullet soll den jeweiligen Mob mit sich zum Trader nehmen.
-execute as @e[type=#game:hostile, tag=!passenger] at @s run summon shulker_bullet ~ ~2 ~ {Steps:50, Tags:["carrier"]}
 
-#Damit nicht ständig neue Shulkerbullets spawnen, wird den neuen Mobs der Tag passenger angeheftet und Mobs mit diesem Tag werden ignoriert.
-execute as @e[type=#game:hostile, tag=!passenger] run tag @s add passenger
+#Mobs den passenger score initialisieren
+execute as @e[type=#game:hostile] unless entity @s[scores={passenger=0..}] run scoreboard players set @s passenger 0
+
+#Die Shulkerbullet soll den jeweiligen Mob mit sich zum Trader nehmen.
+execute as @e[type=#game:hostile, scores={passenger=0}] at @s run summon shulker_bullet ~ ~2 ~ {Steps:50, Tags:["carrier"]}
+
+#Damit nicht ständig neue Shulkerbullets spawnen, wird bei den neuen Mobs der passenger score erhöht und Mobs mit einem Wert über 0 werden ignoriert.
+execute as @e[type=#game:hostile, scores={passenger=0}] run scoreboard players set @s passenger 200
+
+#Alle passenger timer runterzählen
+execute as @e[scores={passenger=1..}] run scoreboard players remove @s passenger 1
 
 #Allen Shulkerbullets ohne Ziel den Trader als Ziel festlegen.
 execute as @e[tag=carrier] unless data entity @s Target run data modify entity @s Target set from entity @e[type=villager, scores={trader=1}, limit=1] UUID
@@ -96,7 +103,9 @@ execute as @e[tag=carrier] unless data entity @s Target run data modify entity @
 #Shulkerbullets / Carrierprojektile handlen
 #Shulkerbullets nehmen nahe gelegene Gegnermobs mit sich in richtung Trader
 execute as @e[tag=carrier] at @s run tp @e[type=#game:hostile, distance=0..2] ~ ~1 ~
+#Shulkerbullets effecten nahe gelegene Gegnermobs mit Fallschadenschutz
+execute as @e[tag=carrier] at @s run effect give @e[type=#game:hostile, distance=0..2] minecraft:slow_falling 1 1
 #Shulkerbullet killen wenn sie einem Spieler näher als 10 Blöcke kommt
-execute as @e[tag=carrier] at @s if entity @e[type=player, distance=0..10]
+execute as @e[tag=carrier] at @s if entity @e[type=player, gamemode=survival, distance=0..2] run kill @s
 #Shulkerbullet killen wenn sie dem Trader näher als 1 Block kommt.
-execute as @e[tag=carrier] at @s if entity @e[type=villager, scores={trader=1}, distance=0..1]
+execute as @e[tag=carrier] at @s if entity @e[type=villager, scores={trader=1}, distance=0..5]
